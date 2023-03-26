@@ -1,14 +1,30 @@
+/*
+Copyright (C) 2023 by
+    Leah Cornelius <leocornelius019@gmail.com> @ Cornelius Inovations
+
+This file is part of the Sparx Robotics Project. It is free software; but attribution is required and you may not sell it or its derivatives.
+
+This provides a simple interface for driving the two drive wheel/track motors using the LM298N motor driver.
+ It is designed to run on an Arduino Nano (ATmega328P) and uses an in-house SerialManager library to communicate with the main controller.
+The main controller is expected to send commands in the following format:
+<command>;[param1],[param2]...[paramN],\n
+where <command> is a string and <param> is an integer
+Example:
+sm;100,100,\n sets the left and right motor speeds to forwards with a PWM of 100 (out of 255 max)
+*/
+
 #include "SerialManager.h"
+
 
 SM::SerialManager usb;
 
-const int mR_pinA = 6;
-const int mR_pinB = 7;
-const int mR_ENA = 9;
+const int mR_pinA = 5;
+const int mR_pinB = 4;
+const int mR_ENA = 10;
 
-const int mL_pinA = 4;
-const int mL_pinB = 5;
-const int mL_ENA = 10;
+const int mL_pinA = 8;
+const int mL_pinB = 6;
+const int mL_ENA = 9;
 
 int left_speed = 0;
 int right_speed = 0;
@@ -20,7 +36,7 @@ bool brake_enabled = false;
 
 void setup() {
   usb.start();
-  Serial.println("tank.movement.serial");
+  Serial.println("sparx.movement.serial");
   pinMode(mR_pinA, OUTPUT);
   pinMode(mR_pinB, OUTPUT);
   pinMode(mL_pinA, OUTPUT);
