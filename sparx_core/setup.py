@@ -24,7 +24,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'telop_subscriber = bozobot.telop_subscriber:main',
+            'telop_subscriber = sparx_core.telop_subscriber:main',
         ],
     },
 )
