@@ -5,7 +5,7 @@ def generate_launch_description():
     return LaunchDescription([
         Node(
             package='sparx_core',
-            namespace='sparx_core',
+            #namespace='sparx_core',
             executable='telop_subscriber',
             name='telop_subscriber', 
         ),
